@@ -58,16 +58,16 @@
 												<i class="fa @if ($gb->good == 1){{ 'fa-eye' }}@else{{ 'fa-eye-slash' }}@endif"></i>
 											</a>
 										</td>
-									<td><b>{{ $gb->name }} {{ $gb->surname }}</b></td>
+									<td>{{ $gb->name }} {{ $gb->surname }}</td>
 									@if ($section->rubric == 1 && $gb->theme_id != 0)
 										<td class="text-center">@if(!is_null($gb->theme_id) || $gb->theme_id != 0)@if(!is_null($gb->theme->title_ru)){{ $gb->theme->title_ru }}@else{{ str_limit(strip_tags($gb->theme->description_ru), 70) }}@endif @endif</td>
 									@endif
 									@if ($gb->theme_id == 0)
 										<td class="text-center">Не выбрана тема вопроса</td>
 									@endif
-									<td><b>{{ $gb->email }}</b></td>
-									<td><b>{{ $gb->contact_phone }}</b></td>
-									<td><b>{{ $gb->created_at }}</b></td>
+									<td>{{ $gb->email }}</td>
+									<td>{{ $gb->contact_phone }}</td>
+									<td>{{ $gb->created_at }}</td>
 									<td class="text-right">
 										<div class="btn-group" role="group">
 											@can('view', $section) <a href="{{ route('admingb::sections.gb.show', ['id' => $id, 'gb_id' => $gb->id]) }}" class="btn btn btn-outline-primary" title="Просмотр"><i class="fa fa-eye"></i></a> @endcan

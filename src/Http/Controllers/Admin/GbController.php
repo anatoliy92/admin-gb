@@ -59,7 +59,7 @@ class GbController extends AvlController
 			return view('admingb::gb.create', [
 					'langs' => $this->langs,
 					'section' => $section,
-					'countries' =>Manuals::whereAlias('country_list')->first()->manual_data_childrens()->get(),
+					'countries' =>getManualsChildrenByAlias('country_lists'),
 					'id' => $id,
 					'rubrics' => $section->rubrics()->orderBy('published_at', 'DESC')->get(),
 			]);
@@ -141,12 +141,12 @@ class GbController extends AvlController
 	{
 			$this->authorize('view', Sections::findOrFail($id));
 			$section = Sections::whereId($id)->firstOrFail();
-			
+
 			return view('admingb::gb.show', [
 					'langs' => $this->langs,
 					'gb' => Gbs::findOrFail($gb_id),
 					'id' => $id,
-					'countries' =>Manuals::whereAlias('country_list')->first()->manual_data_childrens()->get(),
+					'countries' =>getManualsChildrenByAlias('country_lists'),
 					'rubrics' => $section->rubrics()->orderBy('published_at', 'DESC')->get()
 			]);
 	}
@@ -167,7 +167,7 @@ class GbController extends AvlController
 					'gb' => Gbs::findOrFail($gb_id),
 					'id' => $id,
 					'section' => $section,
-					'countries' =>Manuals::whereAlias('country_list')->first()->manual_data_childrens()->get(),
+					'countries' =>getManualsChildrenByAlias('country_lists'),
 					'rubrics' => $section->rubrics()->orderBy('published_at', 'DESC')->get(),
 					'langs' => $this->langs,
 			]);
