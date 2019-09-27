@@ -8,35 +8,35 @@
 	<div class="card">
 		<div class="card-header">
 			<i class="fa fa-align-justify"></i> {{ $section->name_ru }}
-				<div class="card-actions">
-					@can('create', $section)
-						<a href="{{ route('admingb::sections.gb.create', ['id' => $id]) }}" class="pl-3 pr-3 bg-primary text-white" title="Добавить"><i class="fa fa-plus"></i></a>
-					@endcan
-						<a class="btn btn-primary collapsed pl-3 pr-3" data-toggle="collapse" href="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa fa-sliders"></i></a>
-				</div>
+			<div class="card-actions">
+				<a class="btn collapsed pl-3 pr-3" data-toggle="collapse" href="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter"><i class="fa fa-sliders"></i></a>
+				@can('create', $section)
+					<a href="{{ route('admingb::sections.gb.create', ['id' => $id]) }}" class="pl-3 pr-3 bg-primary text-white" title="Добавить"><i class="fa fa-plus"></i></a>
+				@endcan
+			</div>
 		</div>
 		<div class="card-body">
-			<div class="collapse" id="collapseFilter" style="">
-        <div class="card">
-          <div class="card-body">
-							<form action="" method="get" class="mb-4">
-								<div class="row">
-									@if ($section->rubric > 0)
-										<div class="col-4">
-											{{ Form::select('rubric', $rubrics, $request->input('rubric'), ['placeholder' => 'Все обращения', 'class' => 'form-control']) }}
-										</div>
-									@endif
-									<div class="col-2">
-										{{ Form::text('gb_id', null, ['class' => 'form-control', 'placeholder' => 'Номер вопроса (ID)']) }}
-									</div>
+			<div class="collapse" id="collapseFilter">
+        		<div class="card">
+          			<div class="card-body">
+						<form action="" method="get" class="mb-4">
+							<div class="row">
+								@if ($section->rubric > 0)
 									<div class="col-4">
-										{{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
+										{{ Form::select('rubric', $rubrics, $request->input('rubric'), ['placeholder' => 'Все обращения', 'class' => 'form-control']) }}
 									</div>
-									<div class="col-2">
-										<button type="submit" class="btn btn-primary w-100">Показать</button>
-									</div>
+								@endif
+								<div class="col-2">
+									{{ Form::text('gb_id', null, ['class' => 'form-control', 'placeholder' => 'Номер вопроса (ID)']) }}
 								</div>
-							</form>
+								<div class="col-4">
+									{{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) }}
+								</div>
+								<div class="col-2">
+									<button type="submit" class="btn btn-primary w-100">Показать</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

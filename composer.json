@@ -1,32 +1,32 @@
 {
-		"name": "avl/admin-gb",
-		"description": "Guest Book module for CMS IRsite",
-		"license": "MIT",
-		"version": "1.0.2",
-		"authors": [
-				{
-						"name": "Lyos Anatoliy",
-						"email": "les.anatoliy.92@gmail.com"
-				}
-		],
-		"minimum-stability": "dev",
-		"require": {
-			"illuminate/support": "~5",
-			"laravelcollective/html": "^5.4.0"
-		},
-		"autoload": {
-			"psr-4": {
-					"Avl\\AdminGb\\": "src/"
-			}
-		},
-		"extra": {
-				"laravel": {
-						"providers": [
-								"Avl\\AdminGb\\AdminGbServiceProvider"
-						],
-						"aliases": {
-								"AdminGb": "Avl\\AdminGb\\AdminGbServiceProvider"
-						}
-				}
+	"name": "avl/admin-gb",
+	"description": "Guest Book module for CMS IRsite",
+	"license": "MIT",
+	"version": "1.0.3",
+	"authors": [
+		{
+			"name": "Lyos Anatoliy",
+			"email": "les.anatoliy.92@gmail.com"
 		}
+	],
+	"minimum-stability": "dev",
+	"require": {
+		"illuminate/support": "~5",
+		"laravelcollective/html": "^5.4.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Avl\\AdminGb\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Avl\\AdminGb\\AdminGbServiceProvider"
+			],
+			"aliases": {
+				"AdminGb": "Avl\\AdminGb\\AdminGbServiceProvider"
+			}
+		}
+	}
 }
