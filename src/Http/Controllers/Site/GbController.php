@@ -13,11 +13,29 @@ use Mail;
 
 class GbController extends SectionsController
 {
-	public function index ()
+	public function index (Request $request)
 	{
 		$template = 'site.templates.gb.short.' . $this->getTemplateFileName($this->section->current_template->file_short);
 
-		$records = $this->section->gb()->whereGood(1)->orderBy('created_at', 'desc');
+		$records = $this->section->gb()->where('good', 1);
+
+		if ($request->input()) {
+			$records = $records->where(function ($query) use ($request)	 {
+				$query->where('theme_id', $request->input('theme_id'));
+
+				if ($request->input('question_number')) {
+					$query->orWhere('id', $request->input('question_number'));
+				}
+
+				if ($request->input('query')) {
+					$query->orWhere('text_inbox_' . $this->lang, 'LIKE', '%' . $request->input('query') . '%')
+					->orWhere('text_outbox_' . $this->lang, 'LIKE', '%' . $request->input('query') . '%');
+				}
+			});
+		}
+
+		$records = $records->orderBy('created_at', 'desc');
+
 
 		return view($template, [
 			'countries' =>getManualItems('country_list'),
